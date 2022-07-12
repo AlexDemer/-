@@ -1,29 +1,35 @@
-ц#include <stdio.h>
-#define N 7
-
-int main()
-{
-    float A[N] = {1.2,   -2.2,   4.8 ,   -10.3 ,  7.5,  -4,  6.365};
-    float max;
-    
-    if (A[0] < 0)
-        max = -A[0];
+#include <stdio.h>
+float maxmod(float* vector, float max,float check,int size){
+    if (*(vector) < 0)
+        max = -1 * *(vector);
     else
-        max = A[0];
-        
-    for(int i = 1; i < N; i++)
-    {
-        float dop;
-        if (A[i] < 0)
-            dop = -A[i];
+        max = *(vector);
+    for(int i = 1 ; i < size ; i++){
+        if(*(vector+i) < 0 )
+            check = -1 * *(vector+i);
         else
-            dop = A[i];
-            
-        if(dop > max)
-            max = dop;
+            check = *(vector+i);   
+        if (check > max)
+            max = check;
     }
-    
-    printf("Равномерная норма вектора = %f",max);
-    
+    return max;
+}
+
+float main(){
+    int i,size;
+    printf("ввод размерности вектора = ");
+    scanf("%d",&size);
+    float A[size];
+    printf("Ввод Вектора В = ");
+    for(i = 0 ; i < size; i++){
+        scanf("%f",&A[i]);
+    }
+    float max,check,z;
+    z = maxmod(A,max,check,size);
+    printf("вектор В = ");
+    for (i = 0; i < size ; i ++){
+        printf(" %f",A[i]);
+    }
+    printf("\nравномерная норма вектора В = %f",z);
     return 0;
 }
