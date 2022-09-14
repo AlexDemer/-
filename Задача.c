@@ -30,6 +30,6 @@ float main(){
     for (i = 0; i < size ; i ++){
         printf(" %f",A[i]);
     }
-    printf("\nравномерная норма вектора В = %f", maxmod(A, size););
+    printf("\nравномерная норма вектора В = %f", maxmod(A, size));
     return 0;
 }
